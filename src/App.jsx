@@ -2,9 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
 import "./index.css";
-import TaskList from './components/taskList';
 import TodayPage from "./pages/TodayPage";
 import ImportantTasks from "./pages/ImportantTasks";
+import TaskList from "./TaskList/TaskList";
 
 const App = () => {
   return (
