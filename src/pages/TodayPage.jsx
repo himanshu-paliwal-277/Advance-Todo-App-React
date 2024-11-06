@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import TaskInput from "../components/taskInput";
+import TaskInput from "../components/TaskInput";
 import {
   deleteTask,
   fetchWeather,
