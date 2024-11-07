@@ -4,7 +4,7 @@ import Layout from "./pages/Layout";
 import "./index.css";
 import TodayPage from "./pages/TodayPage";
 import ImportantTasks from "./pages/ImportantTasks";
-import TaskList from "./TaskList/TaskList";
+import AllTasks from "./pages/AllTasks";
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/allTasks" element={<TaskList />} />
+          <Route path="/allTasks" element={<AllTasks />} />
           <Route path="/today" element={<TodayPage />} />
           <Route path="/important" element={<ImportantTasks />} />
         </Route>

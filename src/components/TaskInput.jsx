@@ -33,7 +33,7 @@ const TaskInput = () => {
         <div className="flex flex-col gap-6 px-4 pt-8 pb-2 bg-gradient-to-b from-[#eef6ef30] to-[#eef6ef]">
           <input
             type="text"
-            className="py-2 duration-200 bg-transparent border border-none outline-none focus:bg-white focus:px-4 focus:py-4"
+            className="py-2 duration-200 bg-transparent outline-none focus:border-[1px] focus:border-black focus:bg-white focus:px-4 focus:py-4 rounded"
             value={task}
             onChange={(e) => setTask(e.target.value)}
             placeholder="Add a new task"

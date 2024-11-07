@@ -4,14 +4,16 @@ import SideBar from "../components/SideBar";
 import { useDispatch, useSelector } from "react-redux";
 import LoginPage from "./LoginPage";
 import { logout } from "../features/auth/authSlice";
+import { useState } from "react";
 
 function Layout() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
+  const [isOpenSideBar, setIsOpenSideBar] = useState(false);
 
   return (
     <>
-      <Navbar />
+      <Navbar isOpenSideBar={isOpenSideBar} setIsOpenSideBar={setIsOpenSideBar} />
       <div
         className={`${
           isAuthenticated ? "hidden" : ""
@@ -19,16 +21,16 @@ function Layout() {
       >
         <LoginPage />
       </div>
-      <main className={`flex ${isAuthenticated ? "" : "hidden"}`}>
-        <aside className="w-[30%] ">
-          <SideBar />
+      <main className={`flex ${isAuthenticated ? "" : "hidden"} `}>
+        <aside className={`sm:w-[30%] w-[100%] sm:relative absolute sm:z-0 z-[5] bg-white ${isOpenSideBar ? "block" : "hidden"}`}>
+          <SideBar isOpenSideBar={isOpenSideBar} setIsOpenSideBar={setIsOpenSideBar} />
         </aside>
         <div className="relative w-full pt-20">
           <Outlet />
-          <div className="fixed bottom-4 right-4">
+          <div className="fixed z-20 bottom-4 right-4">
             <button
               onClick={() => dispatch(logout())}
-              className="p-2 text-white bg-red-500 rounded "
+              className="p-2 text-white bg-red-500 rounded"
             >
               Logout
             </button>

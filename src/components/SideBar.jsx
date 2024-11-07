@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import icon_1 from "../assets/icons/icon_1.svg";
 import icon_2 from "../assets/icons/icon_2.svg";
 import icon_3 from "../assets/icons/icon_3.svg";
@@ -10,7 +11,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import userImage from "../assets/images/userImage.jpg";
 import { useSelector } from "react-redux";
 
-function SideBar() {
+function SideBar({ setIsOpenSideBar }) {
   const navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname;
@@ -22,7 +23,7 @@ function SideBar() {
   return (
     <>
       <div
-        className={`sticky top-[-76px] flex flex-col items-center w-full h-screen px-[52px] pt-32 text-sm `}
+        className={`sticky top-[-76px] flex flex-col items-center w-full h-screen sm:px-[52px] pt-32 text-sm `}
       >
         <div className="absolute flex flex-col items-center top-20">
           <div className="w-20 h-[76px]  rounded-full bg-gray-100">
@@ -42,7 +43,12 @@ function SideBar() {
               className={`flex items-center h-[35px] gap-3 px-3 rounded-lg cursor-pointer hover:bg-green-50 ${
                 path === "/allTasks" ? "bg-green-50" : ""
               }`}
-              onClick={() => navigate("/allTasks")}
+              onClick={() => {
+                navigate("/allTasks");
+                setTimeout(() => {
+                  setIsOpenSideBar(false);
+                }, 400);
+              }}
             >
               <img className="w-5 h-5 mx-1" src={icon_1} />
               <span className="font-semibold">All Tasks</span>
@@ -51,7 +57,9 @@ function SideBar() {
               className={`flex items-center h-[35px] gap-3 px-3 rounded-lg cursor-pointer hover:bg-green-50 ${
                 path === "/today" ? "bg-green-50" : ""
               }`}
-              onClick={() => navigate("/today")}
+              onClick={() => {navigate("/today"); setTimeout(() => {
+                setIsOpenSideBar(false);
+              }, 400);}}
             >
               <img className="w-7 h-7" src={icon_2} />
               <span className="font-semibold">Today</span>
@@ -60,7 +68,9 @@ function SideBar() {
               className={`flex items-center h-[35px] gap-3 px-3 rounded-lg cursor-pointer hover:bg-green-50 ${
                 path === "/important" ? "bg-green-50" : ""
               }`}
-              onClick={() => navigate("/important")}
+              onClick={() => {navigate("/important"); setTimeout(() => {
+                setIsOpenSideBar(false);
+              }, 400);}}
             >
               <img className="w-7 h-7" src={icon_3} />
               <span className="font-semibold">Important</span>
@@ -83,7 +93,7 @@ function SideBar() {
           <div className="font-semibold">
             <div className="flex justify-between px-6 py-4 mt-2 text-base bg-white">
               <div className="flex gap-2">
-                <h2>Today Tasks</h2>
+                <h2>Total Tasks</h2>
                 <span>{tasks?.length}</span>
               </div>
               <div>
